@@ -48,6 +48,13 @@ public class TestFirstPage {
     }
 
 
-
+    @ParameterizedTest
+    @CsvSource({"1,2,3", "4,5,9", "65,56,121", "-2,-12,-14", "-4,5,1"})
+    public void test_calculator(String inputA, String inputB, String expected){
+        firstPage.enterValueA(inputA);
+        firstPage.enterValueB(inputB);
+        firstPage.clickGetTotal();
+        Assert.isTrue(expected.equals(firstPage.getTotalValue()), "Calculator is not correct");
+    }
 
 }
